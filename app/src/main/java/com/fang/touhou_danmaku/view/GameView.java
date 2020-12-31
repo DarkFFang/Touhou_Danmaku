@@ -27,6 +27,7 @@ import java.util.Map;
 
 public class GameView extends View implements Runnable {
     private Paint paint;
+    private Paint hpPaint;
     private Boss boss;
     private Character character;
     private Center center;
@@ -51,6 +52,14 @@ public class GameView extends View implements Runnable {
 
     private void init(Context context) {
         paint = new Paint();
+
+        hpPaint = new Paint();
+        hpPaint.setStyle(Paint.Style.STROKE);
+        hpPaint.setAntiAlias(true);
+        hpPaint.setDither(true);
+        hpPaint.setColor(Color.RED);
+        hpPaint.setStrokeWidth(10);
+        hpPaint.setAlpha(90);
 
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         soundMap.put(0, soundPool.load(context, R.raw.shot, 1));
@@ -91,6 +100,9 @@ public class GameView extends View implements Runnable {
         frame++;
 
         boss.draw(canvas, paint, this);
+        if (!boss.isDestroyed()) {
+            canvas.drawArc(boss.getRectF(),-90,-360*boss.getHp()/1000,false,hpPaint);
+        }
         //遍历sprites，绘制敌机、子弹、奖励、爆炸效果
         Iterator<Sprite> iteratorBullet = bullet.iterator();
         while (iteratorBullet.hasNext()) {

@@ -168,7 +168,7 @@ public class Boss extends Sprite {
         if (isDestroyed()) {
             return;
         }
-        gameView.soundPool.play(gameView.soundMap.get(4), 0.7f, 0.7f, 0, 0, 1);
+        gameView.soundPool.play(gameView.soundMap.get(4), 0.3f, 0.3f, 0, 0, 1);
         float angle = 22.5f * power;
         for (int i = 0; i < power; i++) {
             float x = getCenterX();
@@ -184,7 +184,7 @@ public class Boss extends Sprite {
         if (isDestroyed()) {
             return;
         }
-        gameView.soundPool.play(gameView.soundMap.get(6), 0.5f, 0.5f, 0, 1, 1);
+        gameView.soundPool.play(gameView.soundMap.get(6), 0.25f, 0.25f, 0, 1, 1);
         Random random = new Random(System.currentTimeMillis());
         float offset = random.nextFloat() * 360/power;
         float angle = 360;
@@ -198,5 +198,7 @@ public class Boss extends Sprite {
         }
     }
 
-
+    public int getHp() {
+        return hp;
+    }
 }
