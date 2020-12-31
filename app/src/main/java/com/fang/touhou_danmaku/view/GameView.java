@@ -58,8 +58,8 @@ public class GameView extends View implements Runnable {
         hpPaint.setAntiAlias(true);
         hpPaint.setDither(true);
         hpPaint.setColor(Color.RED);
-        hpPaint.setStrokeWidth(10);
-        hpPaint.setAlpha(90);
+        hpPaint.setStrokeWidth(12);
+        hpPaint.setAlpha(160);
 
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
         soundMap.put(0, soundPool.load(context, R.raw.shot, 1));
